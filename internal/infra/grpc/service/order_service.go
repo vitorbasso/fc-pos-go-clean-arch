@@ -38,7 +38,7 @@ func (s *OrderService) CreateOrder(ctx context.Context, in *pb.CreateOrderReques
 	}, nil
 }
 
-func (s *OrderService) ListOrder(ctx context.Context, in *pb.Blank) (*pb.ListOrderResponse, error) {
+func (s *OrderService) ListOrders(ctx context.Context, in *pb.Blank) (*pb.ListOrdersResponse, error) {
 	output, err := s.ListOrderUserCase.Execute()
 	if err != nil {
 		return nil, err
@@ -52,5 +52,5 @@ func (s *OrderService) ListOrder(ctx context.Context, in *pb.Blank) (*pb.ListOrd
 			FinalPrice: float32(order.FinalPrice),
 		})
 	}
-	return &pb.ListOrderResponse{Orders: orders}, nil
+	return &pb.ListOrdersResponse{Orders: orders}, nil
 }
